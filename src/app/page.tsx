@@ -1,15 +1,20 @@
 "use client";
 import styles from './page.module.css'
 import {BarcodeScanner} from "components/index";
+import {useRouter} from "next/navigation";
 
-const onDetected = (code: string) => {
-  console.log({code})
-}
+const Home = () => {
+    const router =  useRouter();
 
-export default function Home() {
+    const onDetected = (code: string) => {
+        router.push(`/${code}`)
+    }
+
   return (
     <main className={styles.main}>
       <BarcodeScanner onDetected={onDetected} />
     </main>
   )
 }
+
+export default Home;
