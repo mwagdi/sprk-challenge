@@ -3,9 +3,10 @@ import Quagga from '@ericblade/quagga2';
 
 type BarcodeScannerProps = {
     onDetected: (code: string) => void;
+    onScan: (isScanning: boolean) => void;
 };
 
-const BarcodeScanner = ({ onDetected }: BarcodeScannerProps) => {
+const BarcodeScanner = ({ onDetected, onScan }: BarcodeScannerProps) => {
     const [scanning, setScanning] = useState(false);
 
     const scannerRef = useRef<HTMLDivElement>(null);
@@ -19,17 +20,17 @@ const BarcodeScanner = ({ onDetected }: BarcodeScannerProps) => {
                     target: '#scanner',
                     constraints: {
                         width: 640,
-                        height: 480,
+                        height: 480
                     }
                 },
                 locator: {
                     patchSize: 'large',
-                    halfSample: true,
+                    halfSample: true
                 },
                 decoder: {
-                    readers: ['ean_reader', 'ean_8_reader', 'code_39_reader'],
+                    readers: ['ean_reader', 'ean_8_reader', 'code_39_reader']
                 },
-                debug: false,
+                debug: false
             },
             (error: any) => {
                 if (error) {
@@ -65,6 +66,11 @@ const BarcodeScanner = ({ onDetected }: BarcodeScannerProps) => {
         [onDetected]
     );
 
+    const onScanHandler = () => {
+        setScanning(!scanning);
+        onScan(!scanning);
+    };
+
     useEffect(() => {
         if (scanning) {
             initScanner();
@@ -87,7 +93,7 @@ const BarcodeScanner = ({ onDetected }: BarcodeScannerProps) => {
             <h2>Barcode Scanner</h2>
             <div ref={scannerRef} id="scanner" style={{ marginTop: 16, width: 640, height: 480 }}></div>
             <div style={{ marginTop: 16, display: 'flex', justifyContent: 'center' }}>
-                <button onClick={() => setScanning(!scanning)}>{scanning ? 'Stop Scanner' : 'Start Scanner'}</button>
+                <button onClick={onScanHandler}>{scanning ? 'Stop Scanner' : 'Start Scanner'}</button>
             </div>
         </div>
     );
