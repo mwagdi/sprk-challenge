@@ -1,13 +1,13 @@
-import {createSchema, createYoga} from 'graphql-yoga';
-import {GraphQLError} from "graphql/error";
-import {Product} from "types";
+import { GraphQLError } from 'graphql/error';
+import { createSchema, createYoga } from 'graphql-yoga';
+import { Product } from 'types';
 
 const fetchProduct = async (code: string) => {
     const response = await fetch('http://localhost:3001/products');
     const responseJson = await response.json();
 
     return responseJson.find((item: Product) => item.code === code);
-}
+};
 
 const schema = createSchema({
     typeDefs: `
@@ -59,7 +59,7 @@ const schema = createSchema({
     `,
     resolvers: {
         Query: {
-            product: async (_, {code}) => {
+            product: async (_, { code }) => {
                 try {
                     const product = await fetchProduct(code);
 
@@ -72,14 +72,14 @@ const schema = createSchema({
             }
         },
         Mutation: {
-            editProduct: async (_, {code, data}) => {
+            editProduct: async (_, { code, data }) => {
                 try {
                     const product = await fetchProduct(code);
 
                     if(product) return {
                         ...product,
                         ...data
-                    }
+                    };
                     return new GraphQLError('Product not found');
                 }
                 catch (e) {
@@ -88,9 +88,9 @@ const schema = createSchema({
             }
         }
     }
-})
+});
 
-const {handleRequest} = createYoga({
+const { handleRequest } = createYoga({
     graphqlEndpoint: '/graphql',
     schema,
     fetchAPI: {
@@ -99,4 +99,4 @@ const {handleRequest} = createYoga({
     }
 });
 
-export {handleRequest as GET, handleRequest as POST};
+export { handleRequest as GET, handleRequest as POST };

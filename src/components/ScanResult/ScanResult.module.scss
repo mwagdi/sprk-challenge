@@ -1,0 +1,26 @@
+.scan-result {
+  padding: 16px 32px;
+
+  &__indicator {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__message {
+    font-weight: bold;
+    &--green {
+      color: chartreuse;
+    }
+
+    &--red {
+      color: red;
+    }
+  }
+
+  &__button {
+    background-color: dodgerblue;
+    padding: 8px 16px;
+    display: inline-block;
+    margin-top: 24px;
+  }
+}
