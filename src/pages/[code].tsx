@@ -1,12 +1,13 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { EditableProductField } from 'types';
 
-import { useFetchProductData } from '../hooks';
+import { useFetchProductData, useProductFormSubmit } from '../hooks';
 
 const ProductPage = () => {
     const { query:{ code } } = useRouter();
     const { data, loading, error } = useFetchProductData(code as string);
+    const { postData, response } = useProductFormSubmit();
 
     const [formData, setFormData] = useState(data);
 
@@ -22,10 +23,15 @@ const ProductPage = () => {
         }));
     };
 
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        postData(code as string, formData);
+    };
+
     return (
         <main>
             <h2>GTIN: {code}</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>
                     Amount Multiplier
                     <input type="number" name="amount_multiplier" value={formData.amount_multiplier} onChange={handleChange}/>
@@ -84,6 +90,7 @@ const ProductPage = () => {
                     Validation Status
                     <input type="text" name="validation_status" value={formData.validation_status} onChange={handleChange} />
                 </label>
+                <button type="submit">Submit</button>
             </form>
         </main>
     );

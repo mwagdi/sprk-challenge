@@ -23,18 +23,18 @@ export interface Product {
 }
 
 export interface EditableProduct {
-    amount_multiplier: number;
-    brand: string;
-    description: string;
-    edeka_article_number:boolean;
-    gross_weight: number;
-    net_weight: number;
-    packaging: string;
-    requires_best_before_date: boolean;
-    requires_meat_info: boolean;
-    trade_item_unit_descriptor: string;
-    trade_item_unit_descriptor_name: string;
-    validation_status: string;
+    amount_multiplier?: number;
+    brand?: string;
+    description?: string;
+    edeka_article_number?: string;
+    gross_weight?: number;
+    net_weight?: number;
+    packaging?: string;
+    requires_best_before_date?: boolean;
+    requires_meat_info?: boolean;
+    trade_item_unit_descriptor?: string;
+    trade_item_unit_descriptor_name?: string;
+    validation_status?: string;
 }
 
 export type EditableProductField = keyof EditableProduct;
