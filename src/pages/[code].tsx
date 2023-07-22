@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { EditableProductField } from 'types';
 
 import { useFetchProductData } from '../hooks';
 
 const ProductPage = () => {
     const { query:{ code } } = useRouter();
-    const { data } = useFetchProductData(code as string);
+    const { data, loading, error } = useFetchProductData(code as string);
 
     const [formData, setFormData] = useState(data);
 
@@ -13,14 +14,14 @@ const ProductPage = () => {
         setFormData(data);
     }, [data]);
 
-    // @ts-ignore
-    const handleChange = (event) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setFormData((prevFormData) => ({
             ...prevFormData,
-            [name]: value
+            ...(event.target.type === 'checkbox' ? { [name]: !prevFormData[name as EditableProductField] }: { [name]: value })
         }));
     };
+
     return (
         <main>
             <h2>GTIN: {code}</h2>
@@ -56,6 +57,7 @@ const ProductPage = () => {
                 <label>
                     <input
                         type="checkbox"
+                        name="requires_best_before_date"
                         checked={formData.requires_best_before_date}
                         onChange={handleChange}
                     />
@@ -64,6 +66,7 @@ const ProductPage = () => {
                 <label>
                     <input
                         type="checkbox"
+                        name="requires_meat_info"
                         checked={formData.requires_meat_info}
                         onChange={handleChange}
                     />

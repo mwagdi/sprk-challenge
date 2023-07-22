@@ -22,24 +22,23 @@ export const useFetchProductData = (code: string) => {
         const fetchData = async () => {
             try {
                 const query = `
-              query GetProduct($code: String!) {
-                product(code: $code) {
-                  amount_multiplier
-                  brand
-                  description
-                  edeka_article_number
-                  gross_weight
-                  net_weight
-                  packaging
-                  requires_best_before_date
-                  requires_meat_info
-                  trade_item_unit_descriptor
-                  trade_item_unit_descriptor_name
-                  validation_status
-                }
-              }
-            `;
-
+                  query GetProduct($code: String!) {
+                    product(code: $code) {
+                      amount_multiplier
+                      brand
+                      description
+                      edeka_article_number
+                      gross_weight
+                      net_weight
+                      packaging
+                      requires_best_before_date
+                      requires_meat_info
+                      trade_item_unit_descriptor
+                      trade_item_unit_descriptor_name
+                      validation_status
+                    }
+                  }
+                `;
 
                 const response = await fetch('/graphql', {
                     method: 'POST',
@@ -49,7 +48,6 @@ export const useFetchProductData = (code: string) => {
                     body: JSON.stringify({ query, variables: { code } })
                 });
                 const { data: { product } } = await response.json();
-
 
                 setData(product);
                 setLoading(false);
@@ -61,7 +59,7 @@ export const useFetchProductData = (code: string) => {
             }
         };
 
-        fetchData();
+        if(code) fetchData();
     }, [code]);
 
     return { data, loading, error };
