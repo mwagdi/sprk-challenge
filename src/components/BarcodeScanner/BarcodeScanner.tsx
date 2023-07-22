@@ -6,7 +6,7 @@ type BarcodeScannerProps = {
     onScan: (isScanning: boolean) => void;
 };
 
-const BarcodeScanner = ({ onDetected, onScan }: BarcodeScannerProps) => {
+export const BarcodeScanner = ({ onDetected, onScan }: BarcodeScannerProps) => {
     const [scanning, setScanning] = useState(false);
 
     const scannerRef = useRef<HTMLDivElement>(null);
@@ -98,5 +98,3 @@ const BarcodeScanner = ({ onDetected, onScan }: BarcodeScannerProps) => {
         </div>
     );
 };
-
-export default BarcodeScanner;

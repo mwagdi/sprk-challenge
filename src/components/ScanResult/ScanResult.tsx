@@ -9,7 +9,7 @@ interface ScanResultProps {
     isScanning: boolean
     isAvailable: boolean;
 }
-const ScanResult: React.FC<ScanResultProps> = ({ code, isScanning, isAvailable }) => {
+export const ScanResult: React.FC<ScanResultProps> = ({ code, isScanning, isAvailable }) => {
     const found = isAvailable && !isScanning && !!code;
     const notFound = !isAvailable && !isScanning && !!code;
 
@@ -24,5 +24,3 @@ const ScanResult: React.FC<ScanResultProps> = ({ code, isScanning, isAvailable }
         </div>
     );
 };
-
-export default ScanResult;

@@ -1,2 +1,3 @@
-export { default as BarcodeScanner } from './BarcodeScanner/BarcodeScanner';
-export { default as ScanResult } from './ScanResult/ScanResult';
+export { BarcodeScanner } from './BarcodeScanner/BarcodeScanner';
+export { ProductForm } from './ProductForm/ProductForm';
+export { ScanResult } from './ScanResult/ScanResult';
