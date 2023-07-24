@@ -33,7 +33,9 @@ const schema = createSchema({
             notes: Boolean!
             packaging: String!
             requires_best_before_date: Boolean!
+            best_before_date: String
             requires_meat_info: Boolean!
+            meat_info: String
             trade_item_unit_descriptor: String!
             trade_item_unit_descriptor_name: String!
             type: String!
@@ -51,7 +53,9 @@ const schema = createSchema({
             net_weight: Int
             packaging: String
             requires_best_before_date: Boolean
+            best_before_date: String
             requires_meat_info: Boolean
+            meat_info: String
             trade_item_unit_descriptor: String
             trade_item_unit_descriptor_name: String
             validation_status: String

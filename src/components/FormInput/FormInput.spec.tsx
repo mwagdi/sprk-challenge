@@ -24,6 +24,16 @@ describe('FormInput', () => {
         expect(input.getAttribute('type')).toBe('number');
     });
 
+    it('should render a date input with the correct label', () => {
+        const label = 'Date Input';
+        render(<FormInput label={label} type="date" name="date_input" onChange={() => {}} />);
+        const input = screen.getByLabelText(label);
+
+        expect(input).toBeInTheDocument();
+        expect(input.tagName).toBe('INPUT');
+        expect(input.getAttribute('type')).toBe('date');
+    });
+
     it('should have the correct initial value', () => {
         const label = 'Text Input';
         const initialValue = 'Initial';

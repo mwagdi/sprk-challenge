@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
+import { EditableProduct } from 'types';
 
 export const useFetchProductData = (code: string) => {
-    const [data, setData] = useState({
+    const [data, setData] = useState<EditableProduct>({
         amount_multiplier: 0,
         brand: '',
         description: '',
@@ -32,7 +33,9 @@ export const useFetchProductData = (code: string) => {
                       net_weight
                       packaging
                       requires_best_before_date
+                      best_before_date
                       requires_meat_info
+                      meat_info
                       trade_item_unit_descriptor
                       trade_item_unit_descriptor_name
                       validation_status

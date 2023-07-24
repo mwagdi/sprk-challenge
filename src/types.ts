@@ -31,7 +31,9 @@ export interface EditableProduct {
     net_weight?: number;
     packaging?: string;
     requires_best_before_date?: boolean;
+    best_before_date?: string
     requires_meat_info?: boolean;
+    meat_info?: string
     trade_item_unit_descriptor?: string;
     trade_item_unit_descriptor_name?: string;
     validation_status?: string;

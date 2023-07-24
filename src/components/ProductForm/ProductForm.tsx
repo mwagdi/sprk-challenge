@@ -23,7 +23,9 @@ export const ProductForm: FC<ProductFormProps> = ({ formData, handleChange, hand
             <FormInput label="Net Weight" type="number" name="net_weight" value={formData.net_weight} onChange={handleChange} />
             <FormInput label="Packaging" type="text" name="packaging" value={formData.packaging} onChange={handleChange} />
             <Checkbox label="Requires best before date" name="requires_best_before_date" checked={formData.requires_best_before_date} onChange={handleChange} />
+            {formData.requires_best_before_date && <FormInput label="Best before date" type="date" name="best_before_date" value={formData.best_before_date || ''} onChange={handleChange} />}
             <Checkbox label="Requires Meat Info" name="requires_meat_info" checked={formData.requires_meat_info} onChange={handleChange} />
+            {formData.requires_meat_info && <FormInput label="Meat Info" type="text" name="meat_info" value={formData.meat_info || ''} onChange={handleChange} />}
             <FormInput label="Trade Item Unit Descriptor" type="text" name="trade_item_unit_descriptor" value={formData.trade_item_unit_descriptor} onChange={handleChange} />
             <FormInput label="Trade Item Unit Descriptor Name" type="text" name="trade_item_unit_descriptor_name" value={formData.trade_item_unit_descriptor_name} onChange={handleChange} />
             <FormInput label="Validation Status" type="text" name="validation_status" value={formData.validation_status} onChange={handleChange} />

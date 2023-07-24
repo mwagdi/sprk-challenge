@@ -1,0 +1,11 @@
+.response-viewer {
+  width: 40%;
+  padding: 1em;
+
+  .response-viewer__wrapper {
+    overflow: scroll;
+    padding: 0.5em 0;
+    background-color: #343333;
+    color: white;
+  }
+}

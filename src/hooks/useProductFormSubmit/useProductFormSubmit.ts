@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { EditableProduct } from 'types';
 
 export const useProductFormSubmit = () => {
-    const [loading, setLoading] = useState<boolean>(true);
+    const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<null|Error>(null);
     const [response, setResponse] = useState(null);
 
@@ -20,7 +20,9 @@ export const useProductFormSubmit = () => {
                       net_weight
                       packaging
                       requires_best_before_date
+                      best_before_date
                       requires_meat_info
+                      meat_info
                       trade_item_unit_descriptor
                       trade_item_unit_descriptor_name
                       validation_status

@@ -9,7 +9,11 @@
     "quotes": ["error", "single"],
     "object-curly-spacing": ["error", "always"],
     "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error"
+    "simple-import-sort/exports": "error",
+    "max-statements-per-line": ["error", { "max": 1 }],
+    "no-multiple-empty-lines": "error",
+    "multiline-ternary": ["error", "always"],
+    "no-console": "warn"
   },
   "overrides": [
     {

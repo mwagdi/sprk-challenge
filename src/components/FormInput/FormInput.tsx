@@ -2,7 +2,7 @@ import { ChangeEvent, FC } from 'react';
 
 interface FormInputProps {
     label: string
-    type: 'text' | 'number'
+    type: 'text' | 'number' | 'date'
     name: string
     value?: string | number
     onChange: (event: ChangeEvent<HTMLInputElement>) => void
