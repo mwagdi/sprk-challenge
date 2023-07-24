@@ -6,6 +6,8 @@ import { ProductForm } from 'components/index';
 
 import { useFetchProductData, useProductFormSubmit } from '../hooks';
 
+import styles from './styles/ProductPage.module.scss';
+
 const ProductPage = () => {
     const { query:{ code } } = useRouter();
     const { data, loading, error } = useFetchProductData(code as string);
@@ -33,9 +35,11 @@ const ProductPage = () => {
     };
 
     return (
-        <main>
+        <main className={styles['product-page']}>
             <h2>GTIN: {code}</h2>
-            <ProductForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} />
+            <div className={styles['product-page__wrapper']}>
+                <ProductForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} />
+            </div>
         </main>
     );
 };

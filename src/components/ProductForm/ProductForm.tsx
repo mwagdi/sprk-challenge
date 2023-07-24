@@ -4,6 +4,8 @@ import { EditableProduct } from 'types';
 import { Checkbox } from '../Checkbox/Checkbox';
 import { FormInput } from '../FormInput/FormInput';
 
+import styles from './ProductForm.module.scss';
+
 interface ProductFormProps {
     formData: EditableProduct
     handleChange: (event: ChangeEvent<HTMLInputElement>) => void
@@ -12,7 +14,7 @@ interface ProductFormProps {
 
 export const ProductForm: FC<ProductFormProps> = ({ formData, handleChange, handleSubmit }) => {
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styles['product-form']}>
             <FormInput label="Amount Multiplier" type="number" name="amount_multiplier" value={formData.amount_multiplier} onChange={handleChange} />
             <FormInput label="Brand" type="text" name="brand" value={formData.brand} onChange={handleChange} />
             <FormInput label="Description" type="text" name="description" value={formData.description} onChange={handleChange} />
