@@ -16,7 +16,13 @@ export const ScanResult: React.FC<ScanResultProps> = ({ code, isScanning, isAvai
     return (
         <div className={styles['scan-result']}>
             <div className={styles['scan-result__indicator']}>
-                <p className={styles['scan-result__message']}>{isScanning ? 'Scanning...' : `GTIN: ${code || '-----'}`}</p>
+                <p className={styles['scan-result__message']}>
+                    {
+                        isScanning ?
+                            'Scanning...' :
+                            `GTIN: ${code || '-----'}`
+                    }
+                </p>
                 {found && <p className={cn(styles['scan-result__message'], styles['scan-result__message--green'])}>Product found</p>}
                 {notFound && <p className={cn(styles['scan-result__message'], styles['scan-result__message--red'])}>Product not found</p>}
             </div>

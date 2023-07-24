@@ -1,8 +1,9 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { EditableProductField } from 'types';
 
-import {ProductForm, ResponseViewer} from 'components/index';
+import { ProductForm, ResponseViewer } from 'components/index';
 
 import { useFetchProductData, useProductFormSubmit } from '../hooks';
 
@@ -39,6 +40,7 @@ const ProductPage = () => {
 
     return (
         <main className={styles['product-page']}>
+            <Link href='/'>&larr; Back</Link>
             <h2>GTIN: {code}</h2>
             <div className={styles['product-page__wrapper']}>
                 <ProductForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} />

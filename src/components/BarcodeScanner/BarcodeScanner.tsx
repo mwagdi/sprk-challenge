@@ -93,7 +93,13 @@ export const BarcodeScanner = ({ onDetected, onScan }: BarcodeScannerProps) => {
             <h2>Barcode Scanner</h2>
             <div ref={scannerRef} id="scanner" style={{ marginTop: 16, width: 640, height: 480 }}></div>
             <div style={{ marginTop: 16, display: 'flex', justifyContent: 'center' }}>
-                <button onClick={onScanHandler}>{scanning ? 'Stop Scanner' : 'Start Scanner'}</button>
+                <button onClick={onScanHandler}>
+                    {
+                        scanning ?
+                            'Stop Scanner' :
+                            'Start Scanner'
+                    }
+                </button>
             </div>
         </div>
     );
