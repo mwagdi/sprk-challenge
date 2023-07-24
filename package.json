@@ -5,11 +5,14 @@
   "scripts": {
     "dev": "next dev",
     "dev:server": "npm run server & npm run dev",
+    "build:server": "npm run server & npm run build-start",
     "build": "next build",
+    "build-start": "npm run build && npm start",
     "start": "next start",
     "lint": "next lint",
     "server": "json-server --watch db.json --port 3001",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "docker": "docker build -t sprk-challenge . & docker run -p 3000:3000 sprk-challenge"
   },
   "dependencies": {
     "@ericblade/quagga2": "^1.8.2",

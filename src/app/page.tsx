@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-import { BarcodeScanner, ScanResult } from 'components/index';
+import { BarcodeScanner, ScanResult } from '../components';
 
 import styles from './page.module.scss';
 

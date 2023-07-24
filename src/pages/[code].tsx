@@ -3,8 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { EditableProductField } from 'types';
 
-import { ProductForm, ResponseViewer } from 'components/index';
-
+import { ProductForm, ResponseViewer } from '../components';
 import { useFetchProductData, useProductFormSubmit } from '../hooks';
 
 import styles from './styles/ProductPage.module.scss';
